@@ -44,6 +44,8 @@ class Pharmacy:
                 raise DuplicatedPatientError
         self.patients.append(new_patient)
 
-    def remove_medicine(self, medicine: Medicine) -> None:
-        print(f"Removing Medicine: {medicine.name}, Dosage: {medicine.dosage}")
-        self.medicines.remove(medicine)
+    def remove_medicine(self, medicine_id: str) -> None:
+        for idx, medicine in enumerate(self.medicines):
+            if medicine.id == medicine_id:
+                self.medicines.pop(idx)
+                print(f"Removing Medicine: #{medicine_id} - {medicine.name}, Dosage: {medicine.dosage}")

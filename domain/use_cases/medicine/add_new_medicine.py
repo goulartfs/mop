@@ -7,11 +7,6 @@ from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNo
 
 
 class AddNewMedicine:
-    """
-    Caso de uso: Adicionar novo remédio
-
-    História do usuário: Como administrador, gostaria de adicionar um novo medicamento a uma determinada farmácia
-    """
 
     def __init__(self,
                  pharmacy_repository: PharmacyRepository):
