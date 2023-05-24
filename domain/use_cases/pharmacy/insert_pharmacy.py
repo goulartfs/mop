@@ -3,7 +3,7 @@ from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.pharmacy.errors.duplicated_error import DuplicatedError
 
 
-class AddNewPharmacy:
+class InsertPharmacy:
     def __init__(self, pharmacy_repository: PharmacyRepository) -> None:
         self.repository = pharmacy_repository
 

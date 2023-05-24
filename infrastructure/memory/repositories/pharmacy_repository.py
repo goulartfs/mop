@@ -37,4 +37,4 @@ class PharmacyRepository(Repository):
 
     def add_medicine(self, pharmacy: Pharmacy, medicine: Medicine):
         stored_pharmacy = self.find_by_id(pharmacy_id=pharmacy.id)
-        stored_pharmacy.add_medicine(medicine)
+        stored_pharmacy.insert_medicine(medicine)

@@ -7,7 +7,7 @@ from domain.entities.pharmacy import Pharmacy
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.use_cases.pharmacy.insert_pharmacy import AddNewPharmacy
+from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 from infrastructure.memory.repositories.medicine_repository import MedicineRepository as InMemoryMedicine
 from infrastructure.memory.repositories.patient_repository import PatientRepository as InMemoryPatient
@@ -50,7 +50,7 @@ def test_must_add_new_medicine():
     new_medicine = Medicine("Medicine 1", "1mg")
 
     pharmacy_repository = InMemoryPharmacy()
-    create_pharmacy = AddNewPharmacy(pharmacy_repository=pharmacy_repository)
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
     create_pharmacy.execute(new_pharmacy=pharmacy)
 
     application = __get_application(pharmacy_repository=pharmacy_repository)
@@ -71,7 +71,7 @@ def test_must_raise_exception_when_pharmacy_not_found():
 
 def test_must_register_patient():
     pharmacy_repository = InMemoryPharmacy()
-    create_pharmacy = AddNewPharmacy(pharmacy_repository=pharmacy_repository)
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
     create_pharmacy.execute(new_pharmacy=Pharmacy("Pharmacy1"))
     application = __get_application(pharmacy_repository=pharmacy_repository)
 
@@ -89,7 +89,7 @@ def test_should_affect_given_pharmacy():
     new_medicine2 = Medicine("Medicine2", "10mg")
 
     pharmacy_repository = InMemoryPharmacy()
-    create_pharmacy = AddNewPharmacy(pharmacy_repository=pharmacy_repository)
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
     create_pharmacy.execute(new_pharmacy=pharmacy1)
     create_pharmacy.execute(new_pharmacy=pharmacy2)
 

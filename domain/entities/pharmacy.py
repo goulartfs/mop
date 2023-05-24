@@ -33,13 +33,13 @@ class Pharmacy:
         md5_hash.update(self.name.encode('utf-8'))
         return md5_hash.hexdigest()
 
-    def add_medicine(self, new_medicine: Medicine) -> None:
+    def insert_medicine(self, new_medicine: Medicine) -> None:
         for medicine in self.medicines:
             if medicine.id == new_medicine.id:
                 raise DuplicatedMedicineError
         self.medicines.append(new_medicine)
 
-    def add_patient(self, new_patient: Patient) -> None:
+    def insert_patient(self, new_patient: Patient) -> None:
         for patient in self.patients:
             if patient.id == new_patient.id:
                 raise DuplicatedPatientError

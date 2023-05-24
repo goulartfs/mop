@@ -6,7 +6,7 @@ from domain.use_cases.patient.errors.duplicated_error import DuplicatedError
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 
 
-class AddNewPatient:
+class InsertPatient:
     def __init__(self, pharmacy_repository: PharmacyRepository):
         self.pharmacy_repository = pharmacy_repository
 
@@ -17,7 +17,7 @@ class AddNewPatient:
             raise PharmacyNotFound
 
         try:
-            stored_farmacy.add_patient(new_patient)
+            stored_farmacy.insert_patient(new_patient)
         except DuplicatedPatientError:
             raise DuplicatedError
 

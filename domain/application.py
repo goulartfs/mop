@@ -7,8 +7,8 @@ from domain.entities.prescription import Prescription
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.use_cases.medicine.insert_medicine import AddNewMedicine
-from domain.use_cases.patient.insert_patient import AddNewPatient
+from domain.use_cases.medicine.insert_medicine import InsertMedicine
+from domain.use_cases.patient.insert_patient import InsertPatient
 
 
 class Application:
@@ -21,7 +21,7 @@ class Application:
         self.patient_repository = patient_repository
 
     def add_new_medicine(self, pharmacy: Pharmacy, new_medicine: Medicine) -> None:
-        add_medicine = AddNewMedicine(pharmacy_repository=self.pharmacy_repository)
+        add_medicine = InsertMedicine(pharmacy_repository=self.pharmacy_repository)
         add_medicine.execute(new_medicine=new_medicine, pharmacy=pharmacy)
 
     def remove_medicine(self, pharmacy: Pharmacy, medicine: Medicine) -> None:
@@ -34,7 +34,7 @@ class Application:
         return pharmacy.medicines
 
     def register_patient(self, pharmacy: Pharmacy, new_patient: Patient) -> None:
-        add_patient = AddNewPatient(pharmacy_repository=self.pharmacy_repository)
+        add_patient = InsertPatient(pharmacy_repository=self.pharmacy_repository)
         add_patient.execute(new_patient=new_patient, pharmacy=pharmacy)
 
     def remove_patience(self, pharmacy: Pharmacy, patient: Patient) -> None:
