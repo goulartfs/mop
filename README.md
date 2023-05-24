@@ -13,28 +13,6 @@ Development, Clean Architecture and Clean Code concepts.
 python3 -m pytest -v
 ```
 
-**Configuring Git Hooks**
-
-- Create a file called pre-commit (no extension) in the .git/hooks/ folder of your repository on your local machine.
-
-```
-#windows
-echo 'python3 -m pytest -v' > .git/hooks/pre-commit.bat
-
-#ubuntu
-echo 'python3 -m pytest -v' > .git/hooks/pre-commit
-```
-
-- Make the pre-commit file executable using the command:
-
-```
-# windows
-attrib +x .git/hooks/pre-commit
-
-# ubuntu
-chmod +x .git/hooks/pre-commit
-```
-
 ## :pill: Project Structure
 
 - **app** - Application main directory. Concrete implementations.
