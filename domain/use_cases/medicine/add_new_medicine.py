@@ -17,13 +17,13 @@ class AddNewMedicine:
         self.pharmacy_repository = pharmacy_repository
 
     def execute(self, new_medicine: Medicine, pharmacy: Pharmacy):
-        stored_farmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy.id)
+        stored_pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy.id)
 
-        if not stored_farmacy:
+        if not stored_pharmacy:
             raise PharmacyNotFound
 
         try:
-            stored_farmacy.add_medicine(new_medicine=new_medicine)
+            stored_pharmacy.add_medicine(new_medicine=new_medicine)
         except DuplicatedMedicineError:
             raise DuplicatedError
-        self.pharmacy_repository.update(pharmacy_id=pharmacy.id, updated_pharmacy=stored_farmacy)
+        self.pharmacy_repository.update(pharmacy_id=pharmacy.id, updated_pharmacy=stored_pharmacy)
