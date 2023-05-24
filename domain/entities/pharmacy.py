@@ -53,3 +53,10 @@ class Pharmacy:
                 return None
 
         raise MedicineNotFoundError
+
+    def update_medicine(self, medicine_id, updated_medicine: Medicine):
+        for idx, medicine in enumerate(self.medicines):
+            if medicine.id == medicine_id:
+                self.medicines[idx] = updated_medicine
+
+        raise MedicineNotFoundError

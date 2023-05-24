@@ -38,3 +38,22 @@ def test_must_raise_exception_when_pharmacy_not_found():
 
     with pytest.raises(PharmacyNotFound):
         use_case.execute(medicine_id=medicine.id, pharmacy_id='not-found', updated_medicine=updated_medicine)
+
+
+def test_must_raise_exception_when_medicine_not_found():
+    repository = PharmacyRepository()
+
+    medicine = Medicine(name="Medicine", dosage="1mg")
+    updated_medicine = Medicine(name="MedicineUpdated", dosage="2mg")
+    pharmacy = Pharmacy(
+        name="New Pharmacy",
+        medicines=[
+            medicine
+        ]
+    )
+
+    repository.pharmacies.append(pharmacy)
+    use_case = UpdateMedicine(pharmacy_repository=repository)
+
+    with pytest.raises(MedicineNotFoundError):
+        use_case.execute(medicine_id='not-found', pharmacy_id=pharmacy.id, updated_medicine=updated_medicine)
