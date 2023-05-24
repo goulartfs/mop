@@ -1,11 +1,24 @@
-# to-dos
+# M.O.P - My own pharmacy
 
-- eu quero que minha farmácia tenha uma lista de medicamentos
-- eu quero adicionar um novo medicamento da minha farmácia
-- eu quero remover um medicamento da minha farmácia
-- eu quero atualizar o preço de um medicamento
-- eu quero atualizar a dosagem da minha farmácia
-- eu quero registrar um paciente na minha farmácia
-- eu quero registrar uma receita de um paciente
-- eu quero saber quanto remédio ainda tem disponível
-- eu quero saber quanto custa minha receita
+With this project I hope to easily manage the medications that my family and I need.
+
+
+## Mapped Entities
+
+- **Medicine** - represents a medicine
+
+- **Patient** - represents a patient. A patient can have one or more medical prescriptions
+
+- **Pharmacy** - represents a pharmacy. In our case, a personal stock of medicines that we have in our house, work, etc. A pharmacy may have none or many drugs in stock.
+
+# User's Stories
+
+- As an administrator, I would like to list all drugs in my pharmacy
+- As an administrator, I would like to add a new medicine to my pharmacy
+- As an administrator, I would like to remove a medicine in my pharmacy
+- As an administrator, I would like to update the price of a drug in my pharmacy
+- As an administrator, I would like to update the data for a drug in my pharmacy
+- As an administrator, I would like to register a patient in my pharmacy
+- As an administrator, I would like to register a medical prescription for a patient
+- As an administrator, I would like to list the remaining stock of drugs
+- As an administrator, I would like to calculate the total cost amount of a patient's prescription
