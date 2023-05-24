@@ -1,6 +1,7 @@
 import hashlib
 from typing import List
 
+from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
 from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
 from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
 from domain.entities.medicine import Medicine
@@ -47,5 +48,8 @@ class Pharmacy:
     def remove_medicine(self, medicine_id: str) -> None:
         for idx, medicine in enumerate(self.medicines):
             if medicine.id == medicine_id:
-                self.medicines.pop(idx)
                 print(f"Removing Medicine: #{medicine_id} - {medicine.name}, Dosage: {medicine.dosage}")
+                self.medicines.pop(idx)
+                return None
+
+        raise MedicineNotFoundError

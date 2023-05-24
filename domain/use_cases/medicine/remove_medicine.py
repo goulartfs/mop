@@ -1,3 +1,6 @@
+from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
+from domain.use_cases.medicine.errors.medicine_not_found_error import \
+    MedicineNotFoundError as MedicineNotFoundUseCaseException
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 from domain.repositories.pharmacy_repository import PharmacyRepository
 
@@ -14,5 +17,8 @@ class RemoveMedicine:
         if not stored_pharmacy:
             raise PharmacyNotFound
 
-        stored_pharmacy.remove_medicine(medicine_id=medicine_id)
+        try:
+            stored_pharmacy.remove_medicine(medicine_id=medicine_id)
+        except MedicineNotFoundError:
+            raise MedicineNotFoundUseCaseException
         self.pharmacy_repository.update(pharmacy_id=stored_pharmacy.id, updated_pharmacy=stored_pharmacy)
