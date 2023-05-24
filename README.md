@@ -61,6 +61,7 @@ python3 -m pytest
 - As an administrator, I would like to remove a medicine in my pharmacy
   - :white_check_mark: domain.use_cases.medicine.remove_medicine
 - As an administrator, I would like to update medicine in my pharmacy
+  - :white_check_mark: domain.use_cases.medicine.update_medicine
 - As an administrator, I would like to list the remaining stock of a medicine in my pharmacy
 
 **Patient**
