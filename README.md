@@ -18,23 +18,20 @@ python3 -m pytest -v
 - Crie um arquivo chamado pre-commit (sem extensão) na pasta .git/hooks/ do seu repositório em sua máquina local.
 
 ```
+#windows
+echo 'python3 -m pytest -v' > .git/hooks/pre-commit.bat
+
+#ubuntu
 echo 'python3 -m pytest -v' > .git/hooks/pre-commit
 ```
 
 - Torne o arquivo pre-commit executável usando o comando:
 
-*Windows*
 ```
-#acesse o diretório .git/hooks/
-cd .git/hooks
+# windows
+attrib +x .git/hooks/pre-commit
 
-# concede permissão de execução
-icacls pre-commit /grant Everyone:F .git/hooks/pre-commit
-```
-
-*Ubuntu*
-```
-# concede permissão de execução
+# ubuntu
 chmod +x .git/hooks/pre-commit
 ```
 
