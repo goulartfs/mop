@@ -4,7 +4,7 @@ from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
 from domain.use_cases.medicine.update_medicine import UpdateMedicine
 from domain.use_cases.medicine.errors.medicine_not_found_error import MedicineNotFoundError
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 
@@ -36,7 +36,7 @@ def test_must_raise_exception_when_pharmacy_not_found():
 
     use_case = UpdateMedicine(pharmacy_repository=repository)
 
-    with pytest.raises(PharmacyNotFound):
+    with pytest.raises(PharmacyNotFoundUseCaseException):
         use_case.execute(medicine_id=medicine.id, pharmacy_id='not-found', updated_medicine=updated_medicine)
 
 

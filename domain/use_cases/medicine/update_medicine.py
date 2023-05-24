@@ -1,7 +1,7 @@
 from domain.entities.medicine import Medicine
 from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from domain.use_cases.medicine.errors.medicine_not_found_error import \
     MedicineNotFoundError as MedicineNotFoundUseCaseError
 
@@ -14,7 +14,7 @@ class UpdateMedicine:
         stored_pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy_id)
 
         if not stored_pharmacy:
-            raise PharmacyNotFound
+            raise PharmacyNotFoundUseCaseException
 
         try:
             stored_pharmacy.update_medicine(medicine_id=medicine_id, updated_medicine=updated_medicine)

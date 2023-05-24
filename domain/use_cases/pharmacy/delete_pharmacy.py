@@ -1,5 +1,5 @@
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 
 
 class DeletePharmacy:
@@ -9,5 +9,5 @@ class DeletePharmacy:
     def execute(self, pharmacy_id: str):
         stored_pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy_id)
         if not stored_pharmacy:
-            raise PharmacyNotFound
+            raise PharmacyNotFoundUseCaseException
         self.pharmacy_repository.delete(pharmacy_id=stored_pharmacy.id)

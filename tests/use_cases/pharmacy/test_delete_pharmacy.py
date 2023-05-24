@@ -1,7 +1,7 @@
 import pytest
 
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from domain.use_cases.pharmacy.delete_pharmacy import DeletePharmacy
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
@@ -25,5 +25,5 @@ def test_must_raise_exception_when_pharmacy_not_found():
 
     use_case = DeletePharmacy(pharmacy_repository=repository)
 
-    with pytest.raises(PharmacyNotFound):
+    with pytest.raises(PharmacyNotFoundUseCaseException):
         use_case.execute(pharmacy_id=pharmacy.id)
