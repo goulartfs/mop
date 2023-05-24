@@ -5,7 +5,7 @@ With this project I hope to easily manage the medications that my family and I n
 This project is also an object-oriented programming exercise seeking to follow Domain Driven Development, Test Driven
 Development, Clean Architecture and Clean Code concepts.
 
-## Running
+## :pill: Running
 
 *To run tests*
 
@@ -35,7 +35,7 @@ attrib +x .git/hooks/pre-commit
 chmod +x .git/hooks/pre-commit
 ```
 
-## Project Structure
+## :pill: Project Structure
 
 - **app** - Application main directory. Concrete implementations.
 
@@ -55,7 +55,7 @@ chmod +x .git/hooks/pre-commit
 > using use cases layer makes things easier to understand,
 > to read, to maintain, to extends, etc.
 
-## Mapped Entities
+## :pill: Mapped Entities
 
 - **Medicine** - represents a medicine
 
@@ -64,7 +64,7 @@ chmod +x .git/hooks/pre-commit
 - **Pharmacy** - represents a pharmacy. In our case, a personal stock of medicines that we have in our house, work, etc.
   A pharmacy may have none or many drugs in stock.
 
-## User's Stories
+## :pill: User's Stories
 
 **Pharmacy**
 
