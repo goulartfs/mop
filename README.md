@@ -47,17 +47,17 @@ python3 -m pytest
 **Pharmacy**
 
 - As an administrator, I would like to add new pharmacy
-  - domain.use_cases.pharmacy.add_new_pharmacy
+  - :white_check_mark: domain.use_cases.pharmacy.add_new_pharmacy
 - As an administrator, I would like to update a pharmacy
-  - domain.use_cases.pharmacy.update_pharmacy
+  - :white_check_mark: domain.use_cases.pharmacy.update_pharmacy
 - As an administrator, I would like to update a pharmacy
-  - domain.use_cases.pharmacy.remove_pharmacy
+  - :white_check_mark: domain.use_cases.pharmacy.remove_pharmacy
 
 **Medicine**
 
 - As an administrator, I would like to list all medicines in my pharmacy
 - As an administrator, I would like to add a new medicine to my pharmacy
-  - domain.use_cases.medicine.add_new_medicine
+  - :white_check_mark: domain.use_cases.medicine.add_new_medicine
 - As an administrator, I would like to remove a medicine in my pharmacy
 - As an administrator, I would like to update medicine in my pharmacy
 - As an administrator, I would like to list the remaining stock of a medicine in my pharmacy
@@ -65,7 +65,7 @@ python3 -m pytest
 **Patient**
 
 - As an administrator, I would like to register a new patient in my pharmacy
-  - domain.use_cases.patient.add_new_patient
+  - :white_check_mark: domain.use_cases.patient.add_new_patient
 
 **Prescription**
 
