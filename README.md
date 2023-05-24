@@ -1,4 +1,4 @@
-# M.O.P - My own pharmacy
+# :pill: M.O.P - My own pharmacy :pill:
 
 With this project I hope to easily manage the medications that my family and I need.
 
