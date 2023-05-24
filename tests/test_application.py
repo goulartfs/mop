@@ -81,7 +81,7 @@ def test_must_register_patient():
     assert patient == patient_list[0]
 
 
-def test_deve_separar_medicamentos_por_farmacia():
+def test_should_affect_given_pharmacy():
     pharmacy1 = Pharmacy("Pharmacy1")
     pharmacy2 = Pharmacy("Pharmacy2")
     new_medicine1 = Medicine("Medicine1", "1mg")
