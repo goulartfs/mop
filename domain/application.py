@@ -10,6 +10,7 @@ from domain.use_cases.medicine.update_medicine import UpdateMedicine
 from domain.use_cases.medicine.delete_medicine import DeleteMedicine
 from domain.use_cases.patient.insert_patient import InsertPatient
 from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
+from domain.use_cases.pharmacy.list_pharmacies import ListPharmacies
 from domain.use_cases.pharmacy.update_pharmacy import UpdatePharmacy
 from domain.use_cases.pharmacy.delete_pharmacy import DeletePharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
@@ -77,7 +78,8 @@ class Application:
         raise NotImplementedError()
 
     def list_pharmacies(self) -> List[Pharmacy]:
-        return self.pharmacy_repository.list()
+        list_pharmacies = ListPharmacies(pharmacy_repository=self.pharmacy_repository)
+        return list_pharmacies.execute()
 
     def insert_pharmacy(self, new_pharmacy: Pharmacy):
         insert = InsertPharmacy(pharmacy_repository=self.pharmacy_repository)
