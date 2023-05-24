@@ -13,8 +13,10 @@ class PharmacyRepository(Repository):
     def add(self, pharmacy: Pharmacy):
         self.pharmacies.append(pharmacy)
 
-    def remove(self, pharmacy: Pharmacy):
-        self.pharmacies.remove(pharmacy)
+    def remove(self, pharmacy_id: str):
+        for idx, pharmacy in enumerate(self.pharmacies):
+            if pharmacy_id == pharmacy.id:
+                self.pharmacies.pop(idx)
 
     def list(self) -> List[Pharmacy]:
         return self.pharmacies
