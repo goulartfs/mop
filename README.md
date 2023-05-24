@@ -2,8 +2,8 @@
 
 With this project I hope to easily manage the medications that my family and I need.
 
-
-This project is also an object-oriented programming exercise seeking to follow Domain Driven Development, Test Driven Development, Clean Architecture and Clean Code concepts.
+This project is also an object-oriented programming exercise seeking to follow Domain Driven Development, Test Driven
+Development, Clean Architecture and Clean Code concepts.
 
 ## Running
 
@@ -27,14 +27,14 @@ python3 -m pytest
 
 - **tests** - testing module, here we concentrate unit and functional tests, etc.
 
-
 ## Mapped Entities
 
 - **Medicine** - represents a medicine
 
 - **Patient** - represents a patient. A patient can have one or more medical prescriptions
 
-- **Pharmacy** - represents a pharmacy. In our case, a personal stock of medicines that we have in our house, work, etc. A pharmacy may have none or many drugs in stock.
+- **Pharmacy** - represents a pharmacy. In our case, a personal stock of medicines that we have in our house, work, etc.
+  A pharmacy may have none or many drugs in stock.
 
 ## User's Stories
 

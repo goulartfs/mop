@@ -1,3 +1,3 @@
 class Patient:
-    def __init__(self, name:str) -> None:
+    def __init__(self, name: str) -> None:
         pass

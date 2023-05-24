@@ -1,5 +1,7 @@
 from typing import List
+
 from domain.entities.medicine import Medicine
+
 
 class Pharmacy:
     def __init__(self, name: str):

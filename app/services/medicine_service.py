@@ -1,7 +1,9 @@
 from typing import List
+
 from domain.entities.medicine import Medicine
-from domain.services.medicine_service import MedicineService as Service
 from domain.repositories.medicine_repository import MedicineRepository
+from domain.services.medicine_service import MedicineService as Service
+
 
 class MedicineService(Service):
     def __init__(self, repository: MedicineRepository) -> None:
@@ -10,7 +12,7 @@ class MedicineService(Service):
 
     def list(self) -> List[Medicine]:
         return self.medicine_repository.list()
-    
+
     def add(self, medicine: Medicine) -> None:
         self.medicine_repository.add(medicine)
 

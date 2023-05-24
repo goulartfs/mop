@@ -1,7 +1,8 @@
 from typing import List
+
 from domain.entities.patient import Patient
-from domain.services.patient_service import PatientService as Service
 from domain.repositories.patient_repository import PatientRepository
+from domain.services.patient_service import PatientService as Service
 
 
 class PatientService(Service):
@@ -13,6 +14,6 @@ class PatientService(Service):
 
     def list(self) -> List[Patient]:
         return self.repository.list()
-    
+
     def remove(self, patient: Patient) -> None:
         self.repository.remove(patient)
