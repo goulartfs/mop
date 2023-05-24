@@ -9,7 +9,7 @@ class PharmacyRepository(Repository):
     def insert(self, pharmacy: Pharmacy):
         raise NotImplementedError()
 
-    def remove(self, pharmacy_id: str):
+    def delete(self, pharmacy_id: str):
         raise NotImplementedError()
 
     def update(self, pharmacy_id: str, updated_pharmacy: Pharmacy):

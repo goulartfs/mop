@@ -2,7 +2,7 @@ from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 
 
-class RemovePharmacy:
+class DeletePharmacy:
     def __init__(self, pharmacy_repository: PharmacyRepository):
         self.pharmacy_repository = pharmacy_repository
 
@@ -10,4 +10,4 @@ class RemovePharmacy:
         stored_pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy_id)
         if not stored_pharmacy:
             raise PharmacyNotFound
-        self.pharmacy_repository.remove(pharmacy_id=stored_pharmacy.id)
+        self.pharmacy_repository.delete(pharmacy_id=stored_pharmacy.id)

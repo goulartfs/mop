@@ -18,4 +18,4 @@ class MedicineService(Service):
         self.medicine_repository.insert(medicine)
 
     def remove(self, medicine: Medicine) -> None:
-        self.medicine_repository.remove(medicine)
+        self.medicine_repository.delete(medicine)

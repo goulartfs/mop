@@ -11,7 +11,7 @@ class MedicineRepository(Repository):
     def insert(self, medicine: Medicine) -> None:
         self.medicines.append(medicine)
 
-    def remove(self, medicine: Medicine) -> None:
+    def delete(self, medicine: Medicine) -> None:
         self.medicines.remove(medicine)
 
     def list(self) -> List[Medicine]:

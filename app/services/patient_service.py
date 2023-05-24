@@ -17,4 +17,4 @@ class PatientService(Service):
         return self.repository.list()
 
     def remove(self, patient: Patient) -> None:
-        self.repository.remove(patient)
+        self.repository.delete(patient)

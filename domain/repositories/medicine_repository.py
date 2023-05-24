@@ -8,7 +8,7 @@ class MedicineRepository(Repository):
     def insert(self, medicine: Medicine) -> None:
         raise NotImplementedError()
 
-    def remove(self, medicine: Medicine) -> None:
+    def delete(self, medicine: Medicine) -> None:
         raise NotImplementedError()
 
     def list(self) -> List[Medicine]:

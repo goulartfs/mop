@@ -13,7 +13,7 @@ class PharmacyRepository(Repository):
     def insert(self, pharmacy: Pharmacy):
         self.pharmacies.append(pharmacy)
 
-    def remove(self, pharmacy_id: str):
+    def delete(self, pharmacy_id: str):
         for idx, pharmacy in enumerate(self.pharmacies):
             if pharmacy_id == pharmacy.id:
                 self.pharmacies.pop(idx)
