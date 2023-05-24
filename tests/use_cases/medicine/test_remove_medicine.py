@@ -41,7 +41,7 @@ def test_must_raise_exception_when_pharmacy_not_found():
     use_case = RemoveMedicine(pharmacy_repository=repository)
 
     with pytest.raises(PharmacyNotFound):
-        use_case.execute(medicine_id=medicine.id, pharmacy_id=pharmacy.id)
+        use_case.execute(medicine_id=medicine.id, pharmacy_id='not-found')
 
 
 def test_must_raise_exception_when_medicine_not_found():
