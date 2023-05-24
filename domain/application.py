@@ -7,8 +7,8 @@ from domain.entities.prescription import Prescription
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.use_cases.medicine.add_new_medicine import AddNewMedicine
-from domain.use_cases.patient.add_new_patient import AddNewPatient
+from domain.use_cases.medicine.insert_medicine import AddNewMedicine
+from domain.use_cases.patient.insert_patient import AddNewPatient
 
 
 class Application:
