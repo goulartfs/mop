@@ -1,78 +1,31 @@
 from typing import List
+from app.application import Application
+from app.entities.pharmacy import Pharmacy
+from app.entities.medicine import Medicine
+from app.services.medicine_service import MedicineService
+from infrastructure.memory.repositories.medicine_repository import MedicineRepository
+from app.services.patient_service import PatientService
+from infrastructure.memory.repositories.patient_repository import PatientRepository
     
-class Price:
-    def __init__(self,
-                 value: float = 0.0,
-                 currency:str = "BRL",
-                 symbol:str = "R$"):
-        self.value = value
-        self.currency = currency
-        self.symbol = symbol
-
-class Medicine:
-    def __init__(self, 
-                 name: str, 
-                 dosage: str,
-                 boxes: int = 2,
-                 prescription: bool = False,
-                 prices: List[Price] = []):
-        self.name = name
-        self.dosage = dosage
-        self.boxes = boxes
-        self.prescription = prescription
-        self.prices = prices
-
-    def __eq__(self, other) -> bool:
-        if isinstance(other, Medicine):
-            return self.name == other.name and self.dosage == other.dosage
-        return False
-    
-    def update_price(self, new_price: Price) -> None:
-        self.prices.append(new_price)
-
-    def price(self) -> Price:
-        if self.prices:
-            return self.prices[-1]
-        return Price()
-
-class Pharmacy:
-    def __init__(self, name: str):
-        self.name = name
-        self.medicines: List[Medicine] = []  # List of Medicine objects
-
-    def add_medicine(self, medicine: Medicine) -> None:
-        self.medicines.append(medicine)
-
-    def remove_medicine(self, medicine: Medicine) -> None:
-        print(f"Removing Medicine: {medicine.name}, Dosage: {medicine.dosage}")
-        self.medicines.remove(medicine)
-
-
 def main(*args, **kwargs):
-    pharmacy = Pharmacy("ABC Pharmacy")
+    application = Application(
+        medicine_service=MedicineService(MedicineRepository()),
+        patient_service=PatientService(PatientRepository())
+    )
 
-    pharmacy.add_medicine(Medicine("Besilato de anlodipino", "5mg"))
-    pharmacy.add_medicine(Medicine("Prolopa HBS", "100/25mg"))
-    pharmacy.add_medicine(Medicine("Prolopa BD", "100/25mg"))
-    pharmacy.add_medicine(Medicine("Risperidona", "1mg", prescription=True))
-    pharmacy.add_medicine(Medicine("Sivastatina", "40mg"))
-    pharmacy.add_medicine(Medicine("AAS Protect", "100mg"))
-    pharmacy.add_medicine(Medicine("Cloridrato de metformina", "500mg"))
-    pharmacy.add_medicine(Medicine("Losartana potássica", "50mg"))
+    pharmacy = Pharmacy("My Own Pharmacy")
 
+    application.add_new_medicine(pharmacy, Medicine("Besilato de anlodipino", "5mg"))
+    application.add_new_medicine(pharmacy, Medicine("Prolopa HBS", "100/25mg"))
+    application.add_new_medicine(pharmacy, Medicine("Prolopa BD", "100/25mg"))
+    application.add_new_medicine(pharmacy, Medicine("Risperidona", "1mg", prescription=True))
+    application.add_new_medicine(pharmacy, Medicine("Sinvastatina", "40mg"))
+    application.add_new_medicine(pharmacy, Medicine("AAS Protect", "100mg"))
+    application.add_new_medicine(pharmacy, Medicine("Cloridrato de metformina", "500mg"))
+    application.add_new_medicine(pharmacy, Medicine("Losartana potássica", "50mg"))
 
-    # Access the medicines of the pharmacy
     print (f'Printing Medicine\'s list')
-    for medicine in pharmacy.medicines:
-        print(f"Medicine: {medicine.name} {medicine.dosage}")
-
-    # Remove a medicine from the pharmacy
-    pharmacy.remove_medicine(Medicine("Risperidona", "1mg", True))
-
-    # Verify the updated list of medicines
-
-    print (f'Printing Medicine\'s list\n\n')
-    for medicine in pharmacy.medicines:
+    for medicine in application.get_medicine_list(pharmacy):
         print(f"- {medicine.name} {medicine.dosage} - {medicine.boxes} caixas")
 
 if __name__ == "__main__":
