@@ -4,9 +4,12 @@ from domain.entities.medicine import Medicine
 
 
 class Pharmacy:
-    def __init__(self, name: str):
+    def __init__(self, name: str, medicines=None):
+        if medicines is None:
+            medicines = []
+
         self.name = name
-        self.medicines: List[Medicine] = []  # List of Medicine objects
+        self.medicines = medicines
 
     def add_medicine(self, medicine: Medicine) -> None:
         self.medicines.append(medicine)
