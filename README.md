@@ -56,6 +56,7 @@ python3 -m pytest -v
 **Medicine**
 
 - As an administrator, I would like to list all medicines in my pharmacy
+  - :white_check_mark: domain.use_cases.medicine.list_medicines
 - As an administrator, I would like to add a new medicine to my pharmacy
   - :white_check_mark: domain.use_cases.medicine.add_new_medicine
 - As an administrator, I would like to remove a medicine in my pharmacy
