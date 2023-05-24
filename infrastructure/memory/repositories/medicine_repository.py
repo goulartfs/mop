@@ -1,6 +1,6 @@
 from typing import List
 
-from app.entities.medicine import Medicine
+from domain.entities.medicine import Medicine
 from domain.repositories.medicine_repository import MedicineRepository as Repository
 
 

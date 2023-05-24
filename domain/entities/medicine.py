@@ -1,4 +1,5 @@
 from typing import List
+import hashlib
 
 from domain.entities.price import Price
 
@@ -9,7 +10,10 @@ class Medicine:
                  dosage: str,
                  boxes: int = 2,
                  prescription: bool = False,
-                 prices: List[Price] = []):
+                 prices: List[Price] = None):
+        if prices is None:
+            prices = []
+
         self.name = name
         self.dosage = dosage
         self.boxes = boxes
@@ -20,6 +24,12 @@ class Medicine:
         if isinstance(other, Medicine):
             return self.name == other.name and self.dosage == other.dosage
         return False
+
+    @property
+    def id(self) -> str:
+        md5_hash = hashlib.md5()
+        md5_hash.update(self.name.encode('utf-8'))
+        return md5_hash.hexdigest()
 
     def update_price(self, new_price: Price) -> None:
         self.prices.append(new_price)

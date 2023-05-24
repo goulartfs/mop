@@ -1,6 +1,6 @@
 from typing import List
 
-from app.entities.patient import Patient
+from domain.entities.patient import Patient
 from domain.repositories.patient_repository import PatientRepository as Repository
 
 
