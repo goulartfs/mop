@@ -1,7 +1,8 @@
 from typing import List
+
+from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
 from domain.repositories.repository import Repository
-from domain.entities.medicine import Medicine
 
 
 class PharmacyRepository(Repository):

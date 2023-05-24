@@ -1,16 +1,17 @@
 import pytest
+
 from domain.application import Application
 from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
-from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
+from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
-from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository as InMemoryPharmacy
 from infrastructure.memory.repositories.medicine_repository import MedicineRepository as InMemoryMedicine
 from infrastructure.memory.repositories.patient_repository import PatientRepository as InMemoryPatient
+from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository as InMemoryPharmacy
 
 
 def __get_application(pharmacy_repository: PharmacyRepository = None,

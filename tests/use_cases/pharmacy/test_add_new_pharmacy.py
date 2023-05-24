@@ -1,9 +1,9 @@
 import pytest
 
-from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
-from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
 from domain.entities.pharmacy import Pharmacy
+from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
 from domain.use_cases.pharmacy.errors.duplicated_error import DuplicatedError
+from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 
 def test_must_create_new_pharmacy():

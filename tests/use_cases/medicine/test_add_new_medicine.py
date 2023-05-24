@@ -1,11 +1,12 @@
 import pytest
-from domain.use_cases.medicine.add_new_medicine import AddNewMedicine
-from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
+
 from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
+from domain.use_cases.medicine.add_new_medicine import AddNewMedicine
 from domain.use_cases.medicine.errors.duplicated_error import DuplicatedError
+from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 
 def test_must_add_new_medicine_to_existent_pharmacy():

@@ -1,7 +1,8 @@
 import pytest
+
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.pharmacy.update_pharmacy import UpdatePharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+from domain.use_cases.pharmacy.update_pharmacy import UpdatePharmacy
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 

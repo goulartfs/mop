@@ -1,7 +1,7 @@
+from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
 from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
 from domain.use_cases.medicine.errors.duplicated_error import DuplicatedError
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 
@@ -12,6 +12,7 @@ class AddNewMedicine:
 
     História do usuário: Como administrador, gostaria de adicionar um novo medicamento a uma determinada farmácia
     """
+
     def __init__(self,
                  pharmacy_repository: PharmacyRepository):
         self.pharmacy_repository = pharmacy_repository

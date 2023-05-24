@@ -1,5 +1,5 @@
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 from domain.repositories.pharmacy_repository import PharmacyRepository
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 
 
 class RemovePharmacy:

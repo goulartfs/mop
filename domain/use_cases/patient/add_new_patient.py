@@ -1,9 +1,10 @@
+from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
 from domain.repositories.pharmacy_repository import PharmacyRepository
-from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
 from domain.use_cases.patient.errors.duplicated_error import DuplicatedError
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
+
 
 class AddNewPatient:
     def __init__(self, pharmacy_repository: PharmacyRepository):

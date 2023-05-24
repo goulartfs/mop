@@ -1,9 +1,10 @@
-from typing import List
 import hashlib
-from domain.entities.medicine import Medicine
-from domain.entities.patient import Patient
+from typing import List
+
 from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
 from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
+from domain.entities.medicine import Medicine
+from domain.entities.patient import Patient
 
 
 class Pharmacy:

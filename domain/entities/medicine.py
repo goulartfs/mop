@@ -1,5 +1,5 @@
-from typing import List
 import hashlib
+from typing import List
 
 from domain.entities.price import Price
 

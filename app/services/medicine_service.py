@@ -1,8 +1,9 @@
 from typing import List
 
+from domain.services.medicine_service import MedicineService as Service
+
 from domain.entities.medicine import Medicine
 from domain.repositories.medicine_repository import MedicineRepository
-from domain.services.medicine_service import MedicineService as Service
 
 
 class MedicineService(Service):

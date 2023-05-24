@@ -4,9 +4,9 @@ from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
 from domain.entities.prescription import Prescription
-from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
+from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.medicine.add_new_medicine import AddNewMedicine
 from domain.use_cases.patient.add_new_patient import AddNewPatient
 
