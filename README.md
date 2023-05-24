@@ -44,12 +44,30 @@ python3 -m pytest
 
 ## User's Stories
 
-- As an administrator, I would like to list all drugs in my pharmacy
+**Pharmacy**
+
+- As an administrator, I would like to add new pharmacy
+  - domain.use_cases.pharmacy.add_new_pharmacy
+- As an administrator, I would like to update a pharmacy
+  - domain.use_cases.pharmacy.update_pharmacy
+- As an administrator, I would like to update a pharmacy
+  - domain.use_cases.pharmacy.remove_pharmacy
+
+**Medicine**
+
+- As an administrator, I would like to list all medicines in my pharmacy
 - As an administrator, I would like to add a new medicine to my pharmacy
+  - domain.use_cases.medicine.add_new_medicine
 - As an administrator, I would like to remove a medicine in my pharmacy
-- As an administrator, I would like to update the price of a drug in my pharmacy
-- As an administrator, I would like to update the data for a drug in my pharmacy
-- As an administrator, I would like to register a patient in my pharmacy
-- As an administrator, I would like to register a medical prescription for a patient
-- As an administrator, I would like to list the remaining stock of drugs
+- As an administrator, I would like to update medicine in my pharmacy
+- As an administrator, I would like to list the remaining stock of a medicine in my pharmacy
+
+**Patient**
+
+- As an administrator, I would like to register a new patient in my pharmacy
+  - domain.use_cases.patient.add_new_patient
+
+**Prescription**
+
+- As an administrator, I would like to register a medical prescription for a patient in my pharmacy
 - As an administrator, I would like to calculate the total cost amount of a patient's prescription
