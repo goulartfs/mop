@@ -6,13 +6,16 @@ from domain.entities.pharmacy import Pharmacy
 from domain.entities.prescription import Prescription
 from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.medicine.insert_medicine import InsertMedicine
+from domain.use_cases.medicine.update_medicine import UpdateMedicine
 from domain.use_cases.medicine.delete_medicine import DeleteMedicine
 from domain.use_cases.patient.insert_patient import InsertPatient
 from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from domain.use_cases.pharmacy.update_pharmacy import UpdatePharmacy
 from domain.use_cases.pharmacy.delete_pharmacy import DeletePharmacy
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
+from domain.use_cases.medicine.errors.medicine_not_found_use_case_exception import MedicineNotFoundUseCaseException
 from domain.errors.pharmacy_not_found_exception import PharmacyNotFoundException
+from domain.errors.medicine_not_found_exception import MedicineNotFoundException
 
 
 class Application:
@@ -26,6 +29,18 @@ class Application:
             add_medicine.execute(new_medicine=new_medicine, pharmacy=pharmacy)
         except PharmacyNotFoundUseCaseException:
             raise PharmacyNotFoundException
+
+    def update_medicine(self, pharmacy_id: str, medicine_id: str, updated_medicine: Medicine):
+        update = UpdateMedicine(pharmacy_repository=self.pharmacy_repository)
+        try:
+            update.execute(
+                pharmacy_id=pharmacy_id,
+                medicine_id=medicine_id,
+                updated_medicine=updated_medicine)
+        except PharmacyNotFoundUseCaseException:
+            raise PharmacyNotFoundException
+        except MedicineNotFoundUseCaseException:
+            raise MedicineNotFoundException
 
     def delete_medicine(self, pharmacy: Pharmacy, medicine: Medicine) -> None:
         delete = DeleteMedicine(pharmacy_repository=self.pharmacy_repository)

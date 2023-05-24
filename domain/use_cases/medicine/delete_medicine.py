@@ -1,6 +1,6 @@
 from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
-from domain.use_cases.medicine.errors.medicine_not_found_error import \
-    MedicineNotFoundError as MedicineNotFoundUseCaseException
+from domain.use_cases.medicine.errors.medicine_not_found_use_case_exception import \
+    MedicineNotFoundUseCaseException as MedicineNotFoundUseCaseException
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from domain.repositories.pharmacy_repository import PharmacyRepository
 

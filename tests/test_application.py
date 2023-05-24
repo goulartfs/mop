@@ -84,6 +84,9 @@ def test_must_raise_exception_when_pharmacy_not_found():
     with pytest.raises(PharmacyNotFoundException):
         application.insert_medicine(pharmacy=pharmacy, new_medicine=Medicine("Medicine", "1mg"))
     with pytest.raises(PharmacyNotFoundException):
+        application.update_medicine(pharmacy_id=pharmacy.id, medicine_id='not-found',
+                                    updated_medicine=Medicine("Medicine", "1mg"))
+    with pytest.raises(PharmacyNotFoundException):
         application.delete_patient(pharmacy=pharmacy, patient=Patient('Patient'))
     with pytest.raises(PharmacyNotFoundException):
         application.delete_medicine(pharmacy=pharmacy, medicine=Medicine("Medicine", "1mg"))
