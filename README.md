@@ -10,7 +10,32 @@ Development, Clean Architecture and Clean Code concepts.
 *To run tests*
 
 ```
-python3 -m pytest
+python3 -m pytest -v
+```
+
+**Configuring Git Hooks**
+
+- Crie um arquivo chamado pre-commit (sem extensão) na pasta .git/hooks/ do seu repositório em sua máquina local.
+
+```
+echo 'python3 -m pytest -v' > .git/hooks/pre-commit
+```
+
+- Torne o arquivo pre-commit executável usando o comando:
+
+*Windows*
+```
+#acesse o diretório .git/hooks/
+cd .git/hooks
+
+# concede permissão de execução
+icacls pre-commit /grant Everyone:F .git/hooks/pre-commit
+```
+
+*Ubuntu*
+```
+# concede permissão de execução
+chmod +x .git/hooks/pre-commit
 ```
 
 ## Project Structure
