@@ -8,7 +8,7 @@ class MedicineRepository(Repository):
     def __init__(self) -> None:
         self.medicines = []
 
-    def add(self, medicine: Medicine) -> None:
+    def insert(self, medicine: Medicine) -> None:
         self.medicines.append(medicine)
 
     def remove(self, medicine: Medicine) -> None:

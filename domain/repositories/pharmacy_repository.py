@@ -6,7 +6,7 @@ from domain.repositories.repository import Repository
 
 
 class PharmacyRepository(Repository):
-    def add(self, pharmacy: Pharmacy):
+    def insert(self, pharmacy: Pharmacy):
         raise NotImplementedError()
 
     def remove(self, pharmacy_id: str):

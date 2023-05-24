@@ -5,7 +5,7 @@ from domain.repositories.repository import Repository
 
 
 class PatientRepository(Repository):
-    def add(self, patient: Patient) -> None:
+    def insert(self, patient: Patient) -> None:
         raise NotImplementedError()
 
     def remove(self, patient: Patient) -> None:

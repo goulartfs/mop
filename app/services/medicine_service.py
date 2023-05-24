@@ -15,7 +15,7 @@ class MedicineService(Service):
         return self.medicine_repository.list()
 
     def add(self, medicine: Medicine) -> None:
-        self.medicine_repository.add(medicine)
+        self.medicine_repository.insert(medicine)
 
     def remove(self, medicine: Medicine) -> None:
         self.medicine_repository.remove(medicine)

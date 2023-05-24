@@ -11,7 +11,7 @@ class PatientService(Service):
         self.repository = repository
 
     def add(self, patient: Patient) -> None:
-        self.repository.add(patient)
+        self.repository.insert(patient)
 
     def list(self) -> List[Patient]:
         return self.repository.list()

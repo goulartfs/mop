@@ -10,7 +10,7 @@ class PharmacyRepository(Repository):
     def __init__(self):
         self.pharmacies: List[Pharmacy] = []
 
-    def add(self, pharmacy: Pharmacy):
+    def insert(self, pharmacy: Pharmacy):
         self.pharmacies.append(pharmacy)
 
     def remove(self, pharmacy_id: str):

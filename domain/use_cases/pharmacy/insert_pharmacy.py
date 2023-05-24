@@ -13,4 +13,4 @@ class AddNewPharmacy:
         if stored_pharmacy:
             raise DuplicatedError
 
-        self.repository.add(new_pharmacy)
+        self.repository.insert(new_pharmacy)
