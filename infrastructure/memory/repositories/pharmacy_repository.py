@@ -22,6 +22,7 @@ class PharmacyRepository(Repository):
     def update(self, pharmacy_id: str, updated_pharmacy: Pharmacy):
         for idx, pharmacy in enumerate(self.pharmacies):
             if pharmacy_id == pharmacy.id:
+                self.pharmacies[idx].name = updated_pharmacy.name
                 self.pharmacies[idx].medicines = updated_pharmacy.medicines
                 self.pharmacies[idx].patients = updated_pharmacy.patients
 

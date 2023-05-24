@@ -20,6 +20,11 @@ class Pharmacy:
         self.medicines = medicines
         self.patients = patients
 
+    def __eq__(self, other) -> bool:
+        if isinstance(other, Pharmacy):
+            return self.id == other.id
+        return False
+
     @property
     def id(self) -> str:
         md5_hash = hashlib.md5()
