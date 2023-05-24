@@ -1,16 +1,24 @@
 from typing import List
 import hashlib
 from domain.entities.medicine import Medicine
+from domain.entities.patient import Patient
 from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
+from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
 
 
 class Pharmacy:
-    def __init__(self, name: str, medicines: List[Medicine] = None):
+    def __init__(self,
+                 name: str,
+                 medicines: List[Medicine] = None,
+                 patients: List[Patient] = None):
         if medicines is None:
             medicines = []
+        if patients is None:
+            patients = []
 
         self.name = name
         self.medicines = medicines
+        self.patients = patients
 
     @property
     def id(self) -> str:
@@ -23,6 +31,12 @@ class Pharmacy:
             if medicine.id == new_medicine.id:
                 raise DuplicatedMedicineError
         self.medicines.append(new_medicine)
+
+    def add_patient(self, new_patient: Patient) -> None:
+        for patient in self.patients:
+            if patient.id == new_patient.id:
+                raise DuplicatedPatientError
+        self.patients.append(new_patient)
 
     def remove_medicine(self, medicine: Medicine) -> None:
         print(f"Removing Medicine: {medicine.name}, Dosage: {medicine.dosage}")

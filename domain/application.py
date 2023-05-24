@@ -8,6 +8,7 @@ from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
 from domain.use_cases.medicine.add_new_medicine import AddNewMedicine
+from domain.use_cases.patient.add_new_patient import AddNewPatient
 
 
 class Application:
@@ -28,16 +29,22 @@ class Application:
 
     def get_medicine_list(self, pharmacy: Pharmacy) -> List[Medicine]:
         pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy.id)
+        if not pharmacy:
+            return []
         return pharmacy.medicines
 
-    def register_patient(self, pharmacy: Pharmacy, patient: Patient) -> None:
-        self.patient_repository.add(patient)
+    def register_patient(self, pharmacy: Pharmacy, new_patient: Patient) -> None:
+        add_patient = AddNewPatient(pharmacy_repository=self.pharmacy_repository)
+        add_patient.execute(new_patient=new_patient, pharmacy=pharmacy)
 
     def remove_patience(self, pharmacy: Pharmacy, patient: Patient) -> None:
         raise NotImplementedError()
 
     def get_patient_list(self, pharmacy: Pharmacy) -> List[Patient]:
-        return self.patient_repository.list()
+        pharmacy = self.pharmacy_repository.find_by_id(pharmacy_id=pharmacy.id)
+        if not pharmacy:
+            return []
+        return pharmacy.patients
 
     def get_patient_prescription(self, pharmacy: Pharmacy, patient: Patient) -> Prescription:
         raise NotImplementedError()

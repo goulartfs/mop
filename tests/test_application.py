@@ -1,3 +1,4 @@
+import pytest
 from domain.application import Application
 from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
@@ -6,6 +7,7 @@ from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.repositories.medicine_repository import MedicineRepository
 from domain.repositories.patient_repository import PatientRepository
 from domain.use_cases.pharmacy.add_new_pharmacy import AddNewPharmacy
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_error import PharmacyNotFound
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository as InMemoryPharmacy
 from infrastructure.memory.repositories.medicine_repository import MedicineRepository as InMemoryMedicine
 from infrastructure.memory.repositories.patient_repository import PatientRepository as InMemoryPatient
@@ -58,13 +60,24 @@ def test_must_add_new_medicine():
     assert new_medicine == medicine_list[0]
 
 
-def test_must_register_patient():
+def test_must_raise_exception_when_pharmacy_not_found():
+    new_patient = Patient("John Doe")
     application = __get_application()
 
+    with pytest.raises(PharmacyNotFound):
+        application.register_patient(Pharmacy("Filipe"), new_patient)
+
+
+def test_must_register_patient():
+    pharmacy_repository = InMemoryPharmacy()
+    create_pharmacy = AddNewPharmacy(pharmacy_repository=pharmacy_repository)
+    create_pharmacy.execute(new_pharmacy=Pharmacy("Pharmacy1"))
+    application = __get_application(pharmacy_repository=pharmacy_repository)
+
     patient = Patient("John Doe")
-    application.register_patient(Pharmacy("Filipe"), patient)
-    patient_list = application.get_patient_list(Pharmacy("Filipe"))
-    assert len(patient_list) == 1
+    application.register_patient(Pharmacy("Pharmacy1"), patient)
+    patient_list = application.get_patient_list(Pharmacy("Pharmacy1"))
+    assert 1 == len(patient_list)
     assert patient == patient_list[0]
 
 

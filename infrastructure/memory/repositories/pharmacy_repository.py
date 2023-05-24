@@ -23,6 +23,7 @@ class PharmacyRepository(Repository):
         for idx, pharmacy in enumerate(self.pharmacies):
             if pharmacy_id == pharmacy.id:
                 self.pharmacies[idx].medicines = updated_pharmacy.medicines
+                self.pharmacies[idx].patients = updated_pharmacy.patients
 
     def find_by_id(self, pharmacy_id: str) -> Pharmacy | None:
         for pharmacy in self.pharmacies:
