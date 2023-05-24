@@ -15,10 +15,6 @@ python3 -m pytest
 
 ## Project Structure
 
-> Should I use a service layer or make my
-> application depend directly on the use case?
-> It makes a difference?
-
 - **app** - Application main directory. Concrete implementations.
 
 - **domain** - Domain layer, with entities and business rules. Abstract implementations.
@@ -26,6 +22,16 @@ python3 -m pytest
 - **infrastructure** - Technical implementations and infrastructure details.
 
 - **tests** - testing module, here we concentrate unit and functional tests, etc.
+
+### _Questions_
+
+> #1: Should I use a service layer or make my
+> application depend directly on the use case?
+> It makes a difference?
+>  
+> Answer: I have started with a service layer, then I realize
+> using use cases layer makes things easier to understand,
+> to read, to maintain, to extends, etc.
 
 ## Mapped Entities
 
