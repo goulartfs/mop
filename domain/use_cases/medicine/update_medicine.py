@@ -21,8 +21,4 @@ class UpdateMedicine:
         except MedicineNotFoundError:
             raise MedicineNotFoundUseCaseError
 
-        for idx, medicine in enumerate(stored_pharmacy.medicines):
-            if medicine.id == medicine_id:
-                stored_pharmacy.medicines[idx] = updated_medicine
-
         self.pharmacy_repository.update(pharmacy_id=stored_pharmacy.id, updated_pharmacy=stored_pharmacy)
