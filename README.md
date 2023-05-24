@@ -3,6 +3,23 @@
 With this project I hope to easily manage the medications that my family and I need.
 
 
+This project is also an object-oriented programming exercise seeking to follow Domain Driven Development, Test Driven Development, Clean Architecture and Clean Code concepts.
+
+## Project Structure
+
+> Should I use a service layer or make my
+> application depend directly on the use case?
+> It makes a difference?
+
+- **app** - Application main directory. Concrete implementations.
+
+- **domain** - Domain layer, with entities and business rules. Abstract implementations.
+
+- **infrastructure** - Technical implementations and infrastructure details.
+
+- **tests** - testing module, here we concentrate unit and functional tests, etc.
+
+
 ## Mapped Entities
 
 - **Medicine** - represents a medicine
