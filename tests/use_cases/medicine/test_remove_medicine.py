@@ -25,3 +25,20 @@ def test_must_remove_medicine():
     use_case.execute(medicine_id=medicine.id, pharmacy_id=pharmacy.id)
 
     assert 0 == len(repository.pharmacies[0].medicines)
+
+
+def test_must_raise_exception_when_pharmacy_not_found():
+    repository = PharmacyRepository()
+
+    medicine = Medicine(name="Medicine", dosage="1mg")
+    pharmacy = Pharmacy(
+        name="New Pharmacy",
+        medicines=[
+            medicine
+        ]
+    )
+
+    use_case = RemoveMedicine(pharmacy_repository=repository)
+
+    with pytest.raises(PharmacyNotFound):
+        use_case.execute(medicine_id=medicine.id, pharmacy_id=pharmacy.id)
