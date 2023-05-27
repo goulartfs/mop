@@ -13,6 +13,18 @@ Development, Clean Architecture and Clean Code concepts.
 python3 -m pytest -v
 ```
 
+*To run tests on VSCode*
+
+add to your `.vscode/settings.json` this configs:
+```
+{
+    "python.testing.pytestPath": "pytest",
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.autoTestDiscoverOnSaveEnabled": true
+}
+```
+
 ## :pill: Project Structure
 
 - **app** - Application main directory. Concrete implementations.
@@ -47,28 +59,34 @@ python3 -m pytest -v
 **Pharmacy**
 
 - As an administrator, I would like to add new pharmacy
-  - :white_check_mark: domain.use_cases.pharmacy.add_new_pharmacy
+  - :white_check_mark: domain.use_cases.pharmacy.insert_pharmacy
 - As an administrator, I would like to update a pharmacy
   - :white_check_mark: domain.use_cases.pharmacy.update_pharmacy
 - As an administrator, I would like to update a pharmacy
-  - :white_check_mark: domain.use_cases.pharmacy.remove_pharmacy
+  - :white_check_mark: domain.use_cases.pharmacy.delete_pharmacy
 
 **Medicine**
 
 - As an administrator, I would like to list all medicines in my pharmacy
   - :white_check_mark: domain.use_cases.medicine.list_medicines
 - As an administrator, I would like to add a new medicine to my pharmacy
-  - :white_check_mark: domain.use_cases.medicine.add_new_medicine
+  - :white_check_mark: domain.use_cases.medicine.insert_medicine
 - As an administrator, I would like to remove a medicine in my pharmacy
-  - :white_check_mark: domain.use_cases.medicine.remove_medicine
+  - :white_check_mark: domain.use_cases.medicine.delete_medicine
 - As an administrator, I would like to update medicine in my pharmacy
   - :white_check_mark: domain.use_cases.medicine.update_medicine
 - As an administrator, I would like to list the remaining stock of a medicine in my pharmacy
 
 **Patient**
 
-- As an administrator, I would like to register a new patient in my pharmacy
-  - :white_check_mark: domain.use_cases.patient.add_new_patient
+- As an administrator, I would like to insert a new patient in my pharmacy
+  - :white_check_mark: domain.use_cases.patient.insert_patient
+- As an administrator, I would like to update patient in my pharmacy
+  - :white_check_mark: domain.use_cases.patient.update_patient
+- As an administrator, I would like to delete a patient in my pharmacy
+  - :white_check_mark: domain.use_cases.patient.delete_patient
+- As an administrator, I would like to list all patients in my pharmacy
+  - :white_check_mark: domain.use_cases.patient.list_patients
 
 **Prescription**
 
