@@ -8,7 +8,7 @@ from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception impo
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 
-def test_must_list_medicines():
+def test_must_list_patients():
     pharmacy = Pharmacy("Pharmacy")
     pharmacy.patients.append(Patient("Patient"))
 
