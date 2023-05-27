@@ -1,5 +1,4 @@
 import pytest
-from typing import List
 
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy

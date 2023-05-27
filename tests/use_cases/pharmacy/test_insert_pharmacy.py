@@ -1,8 +1,8 @@
 import pytest
 
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from domain.use_cases.pharmacy.errors.duplicated_error import DuplicatedError
+from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 

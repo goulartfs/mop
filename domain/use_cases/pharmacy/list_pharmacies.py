@@ -1,4 +1,5 @@
 from typing import List
+
 from domain.entities.pharmacy import Pharmacy
 from domain.repositories.pharmacy_repository import PharmacyRepository
 

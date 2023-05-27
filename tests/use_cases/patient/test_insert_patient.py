@@ -2,10 +2,10 @@ import pytest
 
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.patient.insert_patient import InsertPatient
 from domain.use_cases.patient.errors.duplicated_error import DuplicatedError
-from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
+from domain.use_cases.patient.insert_patient import InsertPatient
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
+from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 
 

@@ -2,8 +2,8 @@ import pytest
 
 from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
-from domain.use_cases.medicine.update_medicine import UpdateMedicine
 from domain.use_cases.medicine.errors.medicine_not_found_use_case_exception import MedicineNotFoundUseCaseException
+from domain.use_cases.medicine.update_medicine import UpdateMedicine
 from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository
 

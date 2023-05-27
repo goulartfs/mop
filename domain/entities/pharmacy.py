@@ -1,10 +1,10 @@
 import hashlib
 from typing import List
 
-from domain.entities.errors.patient_not_found_error import PatientNotFoundError
-from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
 from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
 from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
+from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
+from domain.entities.errors.patient_not_found_error import PatientNotFoundError
 from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 
@@ -45,16 +45,16 @@ class Pharmacy:
             if patient.id == new_patient.id:
                 raise DuplicatedPatientError
         self.patients.append(new_patient)
-        
-    def update_patient(self, patient_id:str, updated_patient: Patient) -> None:
+
+    def update_patient(self, patient_id: str, updated_patient: Patient) -> None:
         for idx, patient in enumerate(self.patients):
             if patient_id == patient.id:
                 self.patients[idx] = updated_patient
                 return None
-        
+
         raise PatientNotFoundError
-    
-    def delete_patient(self, patient_id:str) -> None:
+
+    def delete_patient(self, patient_id: str) -> None:
         for idx, patient in enumerate(self.patients):
             if patient.id == patient_id:
                 print(f"Removing Patient: #{patient_id} - {patient.name}")

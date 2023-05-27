@@ -4,19 +4,17 @@ from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
 from domain.entities.prescription import Prescription
+from domain.errors.medicine_not_found_exception import MedicineNotFoundException
+from domain.errors.pharmacy_not_found_exception import PharmacyNotFoundException
 from domain.repositories.pharmacy_repository import PharmacyRepository
+from domain.use_cases.medicine.delete_medicine import DeleteMedicine
+from domain.use_cases.medicine.errors.medicine_not_found_use_case_exception import MedicineNotFoundUseCaseException
 from domain.use_cases.medicine.insert_medicine import InsertMedicine
 from domain.use_cases.medicine.update_medicine import UpdateMedicine
-from domain.use_cases.medicine.delete_medicine import DeleteMedicine
 from domain.use_cases.patient.insert_patient import InsertPatient
+from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
 from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
 from domain.use_cases.pharmacy.list_pharmacies import ListPharmacies
-from domain.use_cases.pharmacy.update_pharmacy import UpdatePharmacy
-from domain.use_cases.pharmacy.delete_pharmacy import DeletePharmacy
-from domain.use_cases.pharmacy.errors.pharmacy_not_found_use_case_exception import PharmacyNotFoundUseCaseException
-from domain.use_cases.medicine.errors.medicine_not_found_use_case_exception import MedicineNotFoundUseCaseException
-from domain.errors.pharmacy_not_found_exception import PharmacyNotFoundException
-from domain.errors.medicine_not_found_exception import MedicineNotFoundException
 
 
 class Application:
@@ -25,7 +23,8 @@ class Application:
         self.pharmacy_repository = pharmacy_repository
 
     def insert_medicine(self, pharmacy: Pharmacy, new_medicine: Medicine) -> None:
-        add_medicine = InsertMedicine(pharmacy_repository=self.pharmacy_repository)
+        add_medicine = InsertMedicine(
+            pharmacy_repository=self.pharmacy_repository)
         try:
             add_medicine.execute(new_medicine=new_medicine, pharmacy=pharmacy)
         except PharmacyNotFoundUseCaseException:
@@ -59,7 +58,8 @@ class Application:
         return pharmacy.medicines
 
     def insert_patient(self, pharmacy: Pharmacy, new_patient: Patient) -> None:
-        add_patient = InsertPatient(pharmacy_repository=self.pharmacy_repository)
+        add_patient = InsertPatient(
+            pharmacy_repository=self.pharmacy_repository)
         try:
             add_patient.execute(new_patient=new_patient, pharmacy=pharmacy)
         except PharmacyNotFoundUseCaseException:
@@ -78,14 +78,13 @@ class Application:
         raise NotImplementedError()
 
     def list_pharmacies(self) -> List[Pharmacy]:
-        list_pharmacies = ListPharmacies(pharmacy_repository=self.pharmacy_repository)
+        list_pharmacies = ListPharmacies(
+            pharmacy_repository=self.pharmacy_repository)
         return list_pharmacies.execute()
 
     def insert_pharmacy(self, new_pharmacy: Pharmacy):
         insert = InsertPharmacy(pharmacy_repository=self.pharmacy_repository)
         insert.execute(new_pharmacy=new_pharmacy)
 
-    def delete_patient(self, pharmacy: Pharmacy, patient:Patient):
+    def delete_patient(self, pharmacy: Pharmacy, patient: Patient):
         raise PharmacyNotFoundException
-
-
