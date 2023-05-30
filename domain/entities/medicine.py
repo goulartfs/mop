@@ -49,7 +49,7 @@ class Medicine:
         return md5_hash.hexdigest()
 
     def update_price(self, new_price: Price) -> None:
-        """update medicine's price and maintain an history
+        """update the medicine price by keeping a history
 
         Args:
             new_price (Price): new price
