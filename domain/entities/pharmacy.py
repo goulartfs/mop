@@ -14,6 +14,7 @@ class Pharmacy:
                  name: str,
                  medicines: List[Medicine] = None,
                  patients: List[Patient] = None):
+        self.id = None
         if medicines is None:
             medicines = []
         if patients is None:
@@ -28,11 +29,11 @@ class Pharmacy:
             return self.id == other.id
         return False
 
-    @property
-    def id(self) -> str:
-        md5_hash = hashlib.md5()
-        md5_hash.update(self.name.encode('utf-8'))
-        return md5_hash.hexdigest()
+    # @property
+    # def id(self) -> str:
+    #     md5_hash = hashlib.md5()
+    #     md5_hash.update(self.name.encode('utf-8'))
+    #     return md5_hash.hexdigest()
 
     def insert_medicine(self, new_medicine: Medicine) -> None:
         for medicine in self.medicines:
