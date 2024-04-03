@@ -4,13 +4,17 @@ from domain.application import Application
 from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 from domain.entities.pharmacy import Pharmacy
-from domain.errors.pharmacy_not_found_exception import PharmacyNotFoundException
+from domain.errors.pharmacy_not_found_exception \
+    import PharmacyNotFoundException
 from domain.repositories.pharmacy_repository import PharmacyRepository
 from domain.use_cases.pharmacy.insert_pharmacy import InsertPharmacy
-from infrastructure.memory.repositories.pharmacy_repository import PharmacyRepository as InMemoryPharmacy
+from infrastructure.memory.repositories.pharmacy_repository \
+    import PharmacyRepository as InMemoryPharmacy
+from domain.use_cases.pharmacy.errors.duplicated_error import DuplicatedError
 
 
-def __get_application(pharmacy_repository: PharmacyRepository = None) -> Application:
+def __get_application(
+        pharmacy_repository: PharmacyRepository = None) -> Application:
     if pharmacy_repository is None:
         pharmacy_repository = InMemoryPharmacy()
 
@@ -79,34 +83,77 @@ def test_must_raise_exception_when_pharmacy_not_found():
     with pytest.raises(PharmacyNotFoundException):
         application.list_medicines(pharmacy=pharmacy)
     with pytest.raises(PharmacyNotFoundException):
-        application.insert_patient(pharmacy=pharmacy, new_patient=Patient('Patient'))
+        application.insert_patient(
+            pharmacy=pharmacy, new_patient=Patient('Patient'))
     with pytest.raises(PharmacyNotFoundException):
-        application.insert_medicine(pharmacy=pharmacy, new_medicine=Medicine("Medicine", "1mg"))
+        application.insert_medicine(
+            pharmacy=pharmacy, new_medicine=Medicine("Medicine", "1mg"))
     with pytest.raises(PharmacyNotFoundException):
-        application.update_medicine(pharmacy_id=pharmacy.id, medicine_id='not-found',
-                                    updated_medicine=Medicine("Medicine", "1mg"))
+        application.update_medicine(
+            pharmacy_id=pharmacy.id, medicine_id='not-found',
+            updated_medicine=Medicine("Medicine", "1mg"))
     with pytest.raises(PharmacyNotFoundException):
-        application.delete_patient(pharmacy=pharmacy, patient=Patient('Patient'))
+        application.delete_patient(
+            pharmacy=pharmacy, patient=Patient('Patient'))
     with pytest.raises(PharmacyNotFoundException):
-        application.delete_medicine(pharmacy=pharmacy, medicine=Medicine("Medicine", "1mg"))
+        application.delete_medicine(
+            pharmacy=pharmacy, medicine=Medicine("Medicine", "1mg"))
 
 
 def test_must_register_patient():
+    pharmacy = Pharmacy("Pharmacy1")
     pharmacy_repository = InMemoryPharmacy()
     create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
-    create_pharmacy.execute(new_pharmacy=Pharmacy("Pharmacy1"))
+    create_pharmacy.execute(new_pharmacy=pharmacy)
     application = __get_application(pharmacy_repository=pharmacy_repository)
 
     patient = Patient("John Doe")
-    application.insert_patient(Pharmacy("Pharmacy1"), patient)
-    patient_list = application.list_patients(Pharmacy("Pharmacy1"))
+    application.insert_patient(pharmacy, patient)
+    patient_list = application.list_patients(pharmacy)
     assert 1 == len(patient_list)
     assert patient == patient_list[0]
 
 
+def test_must_raise_exception_when_inserting_pharmacy_id_equals_zero():
+    pharmacy1 = Pharmacy("Pharmacy1")
+    pharmacy1.id = 0
+    pharmacy_repository = InMemoryPharmacy()
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
+
+    with pytest.raises(Exception):
+        create_pharmacy.execute(new_pharmacy=pharmacy1)
+
+
+def test_must_raise_exception_when_pharmacy_id_is_invalid():
+    pharmacy1 = Pharmacy("Pharmacy1")
+    pharmacy1.id = None
+
+    pharmacy_repository = InMemoryPharmacy()
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
+
+    with pytest.raises(Exception):
+        create_pharmacy.execute(new_pharmacy=pharmacy1)
+
+
+def test_must_raise_exception_when_pharmacy_inserted_already_exists():
+    pharmacy1 = Pharmacy("Pharmacy1")
+    pharmacy1.id = 1
+    pharmacy2 = Pharmacy("Pharmacy2")
+    pharmacy2.id = 1
+
+    pharmacy_repository = InMemoryPharmacy()
+    create_pharmacy = InsertPharmacy(pharmacy_repository=pharmacy_repository)
+    create_pharmacy.execute(new_pharmacy=pharmacy1)
+
+    with pytest.raises(DuplicatedError):
+        create_pharmacy.execute(new_pharmacy=pharmacy2)
+
+
 def test_should_affect_given_pharmacy():
     pharmacy1 = Pharmacy("Pharmacy1")
+    pharmacy1.id = 1
     pharmacy2 = Pharmacy("Pharmacy2")
+    pharmacy2.id = 2
     new_medicine1 = Medicine("Medicine1", "1mg")
     new_medicine2 = Medicine("Medicine2", "10mg")
 

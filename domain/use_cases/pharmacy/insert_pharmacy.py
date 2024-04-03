@@ -8,6 +8,9 @@ class InsertPharmacy:
         self.repository = pharmacy_repository
 
     def execute(self, new_pharmacy: Pharmacy) -> None:
+        if new_pharmacy.id == 0:
+            raise Exception("pharmacy_id cannot be equals zero")
+        
         stored_pharmacy = self.repository.find_by_id(new_pharmacy.id)
 
         if stored_pharmacy:

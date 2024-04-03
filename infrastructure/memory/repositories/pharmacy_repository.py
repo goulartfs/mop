@@ -3,7 +3,8 @@ from typing import List
 
 from domain.entities.medicine import Medicine
 from domain.entities.pharmacy import Pharmacy
-from domain.repositories.pharmacy_repository import PharmacyRepository as Repository
+from domain.repositories.pharmacy_repository \
+    import PharmacyRepository as Repository
 
 
 class PharmacyRepository(Repository):
@@ -29,6 +30,9 @@ class PharmacyRepository(Repository):
                 self.pharmacies[idx].patients = updated_pharmacy.patients
 
     def find_by_id(self, pharmacy_id: str) -> Pharmacy | None:
+        if pharmacy_id is None:
+            raise Exception("invalid id given")
+
         for pharmacy in self.pharmacies:
             if pharmacy_id == pharmacy.id:
                 return copy.deepcopy(pharmacy)

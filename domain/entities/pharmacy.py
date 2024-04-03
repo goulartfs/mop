@@ -1,10 +1,14 @@
-import hashlib
 from typing import List
+import uuid
 
-from domain.entities.errors.duplicated_medicine_error import DuplicatedMedicineError
-from domain.entities.errors.duplicated_patient_error import DuplicatedPatientError
-from domain.entities.errors.medicine_not_found_error import MedicineNotFoundError
-from domain.entities.errors.patient_not_found_error import PatientNotFoundError
+from domain.entities.errors.duplicated_medicine_error \
+    import DuplicatedMedicineError
+from domain.entities.errors.duplicated_patient_error \
+    import DuplicatedPatientError
+from domain.entities.errors.medicine_not_found_error \
+    import MedicineNotFoundError
+from domain.entities.errors.patient_not_found_error \
+    import PatientNotFoundError
 from domain.entities.medicine import Medicine
 from domain.entities.patient import Patient
 
@@ -14,7 +18,7 @@ class Pharmacy:
                  name: str,
                  medicines: List[Medicine] = None,
                  patients: List[Patient] = None):
-        self.id = None
+        self.id = str(uuid.uuid4())
         if medicines is None:
             medicines = []
         if patients is None:
@@ -29,12 +33,6 @@ class Pharmacy:
             return self.id == other.id
         return False
 
-    # @property
-    # def id(self) -> str:
-    #     md5_hash = hashlib.md5()
-    #     md5_hash.update(self.name.encode('utf-8'))
-    #     return md5_hash.hexdigest()
-
     def insert_medicine(self, new_medicine: Medicine) -> None:
         for medicine in self.medicines:
             if medicine.id == new_medicine.id:
@@ -47,7 +45,9 @@ class Pharmacy:
                 raise DuplicatedPatientError
         self.patients.append(new_patient)
 
-    def update_patient(self, patient_id: str, updated_patient: Patient) -> None:
+    def update_patient(self,
+                       patient_id: str,
+                       updated_patient: Patient) -> None:
         for idx, patient in enumerate(self.patients):
             if patient_id == patient.id:
                 self.patients[idx] = updated_patient
@@ -67,7 +67,8 @@ class Pharmacy:
     def delete_medicine(self, medicine_id: str) -> None:
         for idx, medicine in enumerate(self.medicines):
             if medicine.id == medicine_id:
-                print(f"Removing Medicine: #{medicine_id} - {medicine.name}, Dosage: {medicine.dosage}")
+                print(f"Removing Medicine: #{medicine_id} - \
+                    {medicine.name}, Dosage: {medicine.dosage}")
                 self.medicines.pop(idx)
                 return None
 
